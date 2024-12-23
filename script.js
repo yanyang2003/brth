@@ -1,9 +1,17 @@
 document.querySelector('.glow-on-hover').addEventListener('click', () => {
-    alert('还没想好展示什么');
-    alert('骗你的^~^,有惊喜呦');
-    alert('你在期待什么^-^');
-    alert('这么相信我？');
-    alert('好了，不骗你了，准备接受这比较潦草的网页吧');
+    var result = confirm('还没想好展示什么');
+    if(result == true){
+    var result= confirm('骗你的^~^,有惊喜呦');
+    }
+    if(result == true){
+        var result= confirm('你在期待什么^-^');}
+    if(result == true){
+        var result= confirm('这么相信我？');}
+    if(result == true){
+        var result= confirm('好了，不骗你了，准备接受这比较潦草的网页吧');}
+    if(result == true){
+        window.location.href="jinxi.html";
+    }
 });
 
 // Add scroll animation
