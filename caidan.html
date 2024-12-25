@@ -9,7 +9,28 @@
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="main.css">
     <!-- endbuild -->
-    
+     <style>
+      .play-btn {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 1000;
+          width: 40px;
+          height: 40px;
+          border: none;
+          border-radius: 50%;
+          background: #ff4d4d;
+          color: white;
+          cursor: pointer;
+          animation: pulse 2s infinite;
+      }
+      
+      @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+          100% { transform: scale(1); }
+      }
+      </style>
   </head>
   <body>
     <div class="container">
@@ -131,5 +152,41 @@
     <script src="universe.js"></script>
     <script src="main.js"></script>
     <!-- endbuild -->
+    <div class="audio-control">
+      <audio id="bgMusic" loop preload="auto">
+          <source src="桃花渡洞箫感动乐器配乐 _爱给网_aigei_com.mp3" type="audio/mpeg">
+      </audio>
+      <button id="playBtn" class="play-btn">
+          <i class="fas fa-music"></i>
+      </button>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const audio = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playBtn');
+        
+        // 点击按钮播放音乐
+        playBtn.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }).catch(err => {
+                    console.error('播放失败:', err);
+                });
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '<i class="fas fa-music"></i>';
+            }
+        });
+    
+        // 页面任意位置点击时尝试播放
+        document.addEventListener('click', function initAudio() {
+            audio.play().then(() => {
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            });
+            document.removeEventListener('click', initAudio);
+        }, { once: true });
+    });
+    </script>
   </body>
 </html>
