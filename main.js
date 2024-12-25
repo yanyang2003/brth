@@ -119,8 +119,7 @@
     document.addEventListener('click', function (e) {
       textIndex++
       if (textIndex >= texts.length) {
-        textIndex--
-        return
+        textIndex=0
       }
       text = texts[textIndex]
       console.log(textIndex)
@@ -129,8 +128,7 @@
     document.addEventListener('touchstart', function (e) {
       textIndex++
       if (textIndex >= texts.length) {
-        textIndex--
-        return
+        textIndex=0
       }
       text = texts[textIndex]
       console.log(textIndex)
