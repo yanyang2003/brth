@@ -127,17 +127,17 @@ setInterval(movebutton, 500);
 
                     store.add(newMessage); // 添加新的留言
                     transaction.oncomplete = () => {
-                        console.log('留言提交成功');
+                        console.log('语录提交成功');
                         document.getElementById('message').value = ''; // 清空留言框
                         loadMessages(); // 刷新留言列表
                     };
 
                     transaction.onerror = (e) => {
-                        console.error('提交留言失败:', e);
+                        console.error('提交语录失败:', e);
                     };
                 };
             } else {
-                alert('留言不能为空！');
+                alert('语录不能为空！');
             }
         });
 
@@ -169,7 +169,6 @@ setInterval(movebutton, 500);
                 };
             } else {
                 alert('密码错误！');
-                alert('你小子想偷偷删语录？);
             }
         });
         document.getElementById('cancelPasswordBtn').addEventListener('click', () => {
