@@ -37,34 +37,6 @@
             <i class="fas fa-music"></i>
         </button>
     </div>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          const audio = document.getElementById('bgMusic');
-          const playBtn = document.getElementById('playBtn');
-          
-          // 点击按钮播放音乐
-          playBtn.addEventListener('click', function() {
-              if (audio.paused) {
-                  audio.play().then(() => {
-                      playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                  }).catch(err => {
-                      console.error('播放失败:', err);
-                  });
-              } else {
-                  audio.pause();
-                  playBtn.innerHTML = '<i class="fas fa-music"></i>';
-              }
-          });
-      
-          // 页面任意位置点击时尝试播放
-          document.addEventListener('click', function initAudio() {
-              audio.play().then(() => {
-                  playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-              });
-              document.removeEventListener('click', initAudio);
-          }, { once: true });
-      });
-      </script>
   <header>
         <nav>
             <ul>
