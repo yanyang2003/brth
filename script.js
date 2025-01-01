@@ -13,32 +13,6 @@ document.querySelector('.glow-on-hover').addEventListener('click', () => {
         window.location.href="jinxi.html";
     }
 });
-      document.addEventListener('DOMContentLoaded', function() {
-          const audio = document.getElementById('bgMusic');
-          const playBtn = document.getElementById('playBtn');
-          
-          // 点击按钮播放音乐
-          playBtn.addEventListener('click', function() {
-              if (audio.paused) {
-                  audio.play().then(() => {
-                      playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                  }).catch(err => {
-                      console.error('播放失败:', err);
-                  });
-              } else {
-                  audio.pause();
-                  playBtn.innerHTML = '<i class="fas fa-music"></i>';
-              }
-          });
-      
-          // 页面任意位置点击时尝试播放
-          document.addEventListener('click', function initAudio() {
-              audio.play().then(() => {
-                  playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-              });
-              document.removeEventListener('click', initAudio);
-          }, { once: true });
-      });
 // Add scroll animation
 const sections = document.querySelectorAll('.container');
 const options = {
