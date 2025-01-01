@@ -13,7 +13,32 @@ document.querySelector('.glow-on-hover').addEventListener('click', () => {
         window.location.href="jinxi.html";
     }
 });
-
+      document.addEventListener('DOMContentLoaded', function() {
+          const audio = document.getElementById('bgMusic');
+          const playBtn = document.getElementById('playBtn');
+          
+          // 点击按钮播放音乐
+          playBtn.addEventListener('click', function() {
+              if (audio.paused) {
+                  audio.play().then(() => {
+                      playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                  }).catch(err => {
+                      console.error('播放失败:', err);
+                  });
+              } else {
+                  audio.pause();
+                  playBtn.innerHTML = '<i class="fas fa-music"></i>';
+              }
+          });
+      
+          // 页面任意位置点击时尝试播放
+          document.addEventListener('click', function initAudio() {
+              audio.play().then(() => {
+                  playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+              });
+              document.removeEventListener('click', initAudio);
+          }, { once: true });
+      });
 // Add scroll animation
 const sections = document.querySelectorAll('.container');
 const options = {
@@ -43,7 +68,7 @@ function movebutton() {
 }
 
 setInterval(movebutton, 500);
-   // 打开（或创建）IndexedDB 数据库
+       // 打开（或创建）IndexedDB 数据库
         const openDatabase = () => {
             const request = indexedDB.open('MessagesDB', 1);
 
@@ -127,17 +152,17 @@ setInterval(movebutton, 500);
 
                     store.add(newMessage); // 添加新的留言
                     transaction.oncomplete = () => {
-                        console.log('语录提交成功');
+                        console.log('留言提交成功');
                         document.getElementById('message').value = ''; // 清空留言框
                         loadMessages(); // 刷新留言列表
                     };
 
                     transaction.onerror = (e) => {
-                        console.error('提交语录失败:', e);
+                        console.error('提交留言失败:', e);
                     };
                 };
             } else {
-                alert('语录不能为空！');
+                alert('留言不能为空！');
             }
         });
 
@@ -164,7 +189,7 @@ setInterval(movebutton, 500);
                     };
 
                     transaction.onerror = (e) => {
-                        console.error('清空语录失败:', e);
+                        console.error('清空留言失败:', e);
                     };
                 };
             } else {
