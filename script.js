@@ -43,6 +43,7 @@ function movebutton() {
 
 setInterval(movebutton, 500);
        // 打开（或创建）IndexedDB 数据库
+/*
         const openDatabase = () => {
             const request = indexedDB.open('MessagesDB', 1);
 
@@ -177,3 +178,4 @@ setInterval(movebutton, 500);
 
         // 页面加载时显示所有留言
         window.onload = loadMessages;
+        */
